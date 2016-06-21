@@ -1,6 +1,7 @@
 #include <iostream>
-#include <string.h>
+//#include <string.h>
 #include <stdlib.h>
+//#include <Ascensor.h>
 using namespace std;
 
 struct registro
@@ -11,9 +12,9 @@ struct registro
 
 typedef registro nodo ;
 
-bool colaVacia (nodo *inicio)
+bool colaVacia (nodo *primero)
 {
-	if (inicio == NULL)
+	if (primero == NULL)
 	{
 		void iniciarCola();
 		return true;
@@ -24,9 +25,9 @@ bool colaVacia (nodo *inicio)
 
 }
 
-void iniciarCola (  nodo *primero , nodo *nuevo , nodo *ultimo, int v)
+void iniciarCola (  nodo *primero , nodo *nuevo , nodo *ultimo, char v)
 {
-	if (primero == NULL)
+	if (colaVacia(primero))
 	{
 		nuevo = new (nodo);	
 		nuevo -> valor = v;
@@ -45,9 +46,24 @@ void iniciarCola (  nodo *primero , nodo *nuevo , nodo *ultimo, int v)
 	}
 }
 
-void encolar ()
+void encolar (nodo *nuevoNodo, nodo *ultimo, nodo aux, nodo *primero , char v)
 {
+	
+     
+      nuevoNodo = new (nodo);
+      nuevoNodo ->valor= v ;
+      nuevoNodo ->sig = NULL;
 
+      if(colaVacia(primero))
+	  {
+		  primero = nuevoNodo;
+	  }
+      else
+      {
+          ultimo ->sig = nuevoNodo;
+		  //falta una ultima linea
+      }
+      	
 }
 
 void desencolar ()
